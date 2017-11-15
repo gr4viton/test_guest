@@ -48,63 +48,20 @@ list. Print your list to make sure you actually have an empty list at the end
 of your program.
 """
 
-"""This is a program from a book "Crash Course Python" page 46."""
+"""This is a program from a book "Crash Course Python" page 46.
 
-print("")
-                # CODE NAME: PRINT A S**T LOUD OF IT
-            # Following program is a task 3-4. "Guest List"
-
-guests = ["Abraham", "Isaac", "Isaiah", "Oozes", "Socrates", "Plato", "Aristotle"]
-
-for guest in guests:
-    print("     Dear " + guest + ", come to see your beloved Earth once again.")
-    print("     We would like to invite you on a dinner on a mt. Purgatory")
-    print("     Please come to visit us in our timely limited suffering.")
-    print("")
-
-    # Following program is a task 3-5. from Crash Course Python p. 46.
-
-# you can try to go through the Python language course
-# in android app called "Learn Python" it's a good course for free
-
-# this is how to print multiline
-print("""
-                To suffering souls in Purgatory,
-
-          I do not want to waste my eternity in Limbo.
-             Watching the Glory of the Holy Trinity
-                 is infinitely more pleasurable.
-                   I will be praying for you.
-                             Abraham
-                       Bound to Glory inc.
-
-""")
-        # print(guests[0]): How to centre it as on previous line?
-txt = guests[0]
-width = 80  # fill in your number
-
-# everything is an object - even str
-print(txt.center(width))
-
-# you can try print(dir(txt)) to find out what are the functions which can be called on str object
-
-                    # Removing Abraham from list
+                CODE NAME: PRINT A S**T LOUD OF IT
+            Following program is a task 3-4. "Guest List"
+"""
 
 print()
 
-cannot_come = guests.pop(0)
-# print("     Thank you " + cannot_come + " you know how to make everyone happy.")
-print("     Thank you {who} you know how to make everyone happy.".format(
-    who=cannot_come
-))
-# str.format() is much better than simple string concatenation
-
-print()
-
-guests.insert(0, "Aquinas")
+##########
+# Following program is a task 3-5. from Crash Course Python p. 46.
 
 # also use functions - if you know you gonna print it multiple times create function:
 def print_welcome(guest):
+    """Prints welcome for guest."""
     print("""
      Dear {guest}, come to see your beloved Earth once again.
      We would like to invite you on a dinner on a mt. Purgatory
@@ -112,57 +69,137 @@ def print_welcome(guest):
 
 """.format(guets=guets))
 
-for guest in guests:
-    print_welcome(guest)
+def part_1_title():
+    """FIRST."""
 
-    # Following program is a task 3-6. from Crash Course Python p. 46.
+    guests = ["Abraham", "Isaac", "Isaiah", "Oozes", "Socrates", "Plato", "Aristotle"]
 
-print("""             I bought a much bigger dinner table.
+    # you can try to go through the Python language course
+    # in android app called "Learn Python" it's a good course for free
 
-""")
+    # this is how to print multiline
+    print("""
+                    To suffering souls in Purgatory,
 
-guests.insert(0, "Herakleitos")
-guests.insert(4, "AbbÃ© Pierre")
-guests.insert(9, "C.S. Lewis")
-guests.append("Tolkien")
+              I do not want to waste my eternity in Limbo.
+                 Watching the Glory of the Holy Trinity
+                     is infinitely more pleasurable.
+                       I will be praying for you.
+                                 Abraham
+                           Bound to Glory inc.
 
-for guest in guests:
-    print_welcome(guest)
+    """)
+            # print(guests[0]): How to centre it as on previous line?
+    txt = guests[0]
+    width = 80  # fill in your number
 
-    # Following program is a task 3-7. from Crash Course Python p. 46.
+    # everything is an object - even str
+    print(txt.center(width))
+    # you can try print(dir(txt)) to find out what are the functions which can be called on str object
 
-print("""     I found out that the new bigger table will not arrive on time.
 
-""")
+def part_2_remove():
+    """Removing Abraham from list."""
+
+    print()
+
+    cannot_come = guests.pop(0)
+    # print("     Thank you " + cannot_come + " you know how to make everyone happy.")
+    print("     Thank you {who} you know how to make everyone happy.".format(
+        who=cannot_come
+    ))
+
+    # str.format() is much better than simple string concatenation
+
+
+def part_3_welcome_guests():
+    """Insert aquinas welcome guests."""
+    print()
+
+    guests.insert(0, "Aquinas")
+
+    for guest in guests:
+        print_welcome(guest)
+
+
+##########
+# Following program is a task 3-6. from Crash Course Python p. 46.
+
+def part_4_dinner_table():
+    """Bigger table."""
+    print("""             I bought a much bigger dinner table.
+
+    """)
+
+    guests.insert(0, "Herakleitos")
+    guests.insert(4, "AbbÃ© Pierre")
+    guests.insert(9, "C.S. Lewis")
+    guests.append("Tolkien")
+
+    for guest in guests:
+        print_welcome(guest)
+
+##########
+# Following program is a task 3-7. from Crash Course Python p. 46.
+
+def part_5_no_table():
+    """Table rrival."""
+    print("""     I found out that the new bigger table will not arrive on time.
+
+    """)
 
 def drop_guest(index):
-
+    """Remove a guest and appology."""
     cannot_invite = guests.pop(index)
 
     print("""     I am very sorry {nam} but I cannot invite you.
      The table I bought in Purgatory Store will not arrive on time.
 """.format(nam=cannot_invite))
 
-# did not read the assignment - you probably want to empty the list one by one?
-# `_` can be used when you do not need the value
-# - i am not printing `i` variable in the following for loop, so why would i assign it a name
-number_to_remove = len(guests) - 2
-for _ in range(number_to_remove):
-    drop_guest(0)
+def part_6_shrink_guests():
+    """Remove some guests and appology."""
+    # did not read the assignment - you probably want to empty the list one by one?
+    # `_` can be used when you do not need the value
+    # - i am not printing `i` variable in the following for loop, so why would i assign it a name
+    number_to_remove = len(guests) - 2
+    for _ in range(number_to_remove):
+        drop_guest(0)
 
-                # Author of the book probably did not expect
-                            # such a long list :D
-print("")
+    # Author of the book probably did not expect
+    # such a long list :D
+    # he just used for-loop
+    print()
 
-for guest in guests:
-    print("""     Dear {guest}, although my table is very small
+    for guest in guests:
+        print("""     Dear {guest}, although my table is very small
      you are still invited. Looking forward to see you!
-""".format(guest=guest))
+    """.format(guest=guest))
 
-for _ in range(2):
-    del guests[0]
+    for _ in range(2):
+        del guests[0]
 
-# Is there a way how to remove both people
-# from a list in one line instead of two?
-# - there is - for loop
-print(guests)
+    # Is there a way how to remove both people
+    # from a list in one line instead of two?
+    # - there is - for loop
+    print(guests)
+
+
+# if you played with C language - you know main function
+# there is something similar in python:
+
+if __name__ == '__main__':
+    """This gets executed if you run the script via
+
+    `python guest.py`
+    """
+    print('HI!')
+
+    # call all the functions with individual parts
+    part_1_title()
+    part_2_remove()
+    part_3_welcome_guests()
+    part_4_dinner_table()
+    part_5_no_table()
+    part_6_shrink_guests()
+
+
