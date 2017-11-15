@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 # author: adam kvitek
 # this code is not created by me (gr4viton) i just help to refactor
 
@@ -61,43 +64,62 @@ for guest in guests:
 
     # Following program is a task 3-5. from Crash Course Python p. 46.
 
-print("")
+# you can try to go through the Python language course
+# in android app called "Learn Python" it's a good course for free
 
-print("                To suffering souls in Purgatory,")
-print("")
-print("          I do not want to waste my eternity in Limbo.")
-print("             Watching the Glory of the Holy Trinity")
-print("                 is infinitely more pleasurable.")
-print("                   I will be praying for you.")
-print("                             Abraham")
-print("                       Bound to Glory inc.")
-print("")
+# this is how to print multiline
+print("""
+                To suffering souls in Purgatory,
+
+          I do not want to waste my eternity in Limbo.
+             Watching the Glory of the Holy Trinity
+                 is infinitely more pleasurable.
+                   I will be praying for you.
+                             Abraham
+                       Bound to Glory inc.
+
+""")
         # print(guests[0]): How to centre it as on previous line?
+txt = guests[0]
+width = 80  # fill in your number
+
+# everything is an object - even str
+print(txt.center(width))
+
+# you can try print(dir(txt)) to find out what are the functions which can be called on str object
 
                     # Removing Abraham from list
 
-print("")
+print()
 
 cannot_come = guests.pop(0)
-print("     Thank you " + cannot_come + " you know how to make everyone happy.")
+# print("     Thank you " + cannot_come + " you know how to make everyone happy.")
+print("     Thank you {who} you know how to make everyone happy.".format(
+    who=cannot_come
+))
+# str.format() is much better than simple string concatenation
 
-print("")
-print("")
+print()
 
 guests.insert(0, "Aquinas")
 
+# also use functions - if you know you gonna print it multiple times create function:
+def print_welcome(guest):
+    print("""
+     Dear {guest}, come to see your beloved Earth once again.
+     We would like to invite you on a dinner on a mt. Purgatory
+     Please come to visit us in our timely limited suffering.
+
+""".format(guets=guets))
+
 for guest in guests:
-    print("     Dear " + guest + ", come to see your beloved Earth once again.")
-    print("     We would like to invite you on a dinner on a mt. Purgatory")
-    print("     Please come to visit us in our timely limited suffering.")
-    print("")
-    print("")
+    print_welcome(guest)
 
     # Following program is a task 3-6. from Crash Course Python p. 46.
 
-print("             I bought a much bigger dinner table.")
-print("")
-print("")
+print("""             I bought a much bigger dinner table.
+
+""")
 
 guests.insert(0, "Herakleitos")
 guests.insert(4, "AbbÃ© Pierre")
@@ -105,66 +127,42 @@ guests.insert(9, "C.S. Lewis")
 guests.append("Tolkien")
 
 for guest in guests:
-    print("     Dear " + guest + ", come to see your beloved Earth once again.")
-    print("     We would like to invite you on a dinner on a mt. Purgatory")
-    print("     Please come to visit us in our timely limited suffering.")
-    print("")
-    print("")
+    print_welcome(guest)
 
     # Following program is a task 3-7. from Crash Course Python p. 46.
 
-print("     I found out that the new bigger table will not arrive on time.")
-print("")
-print("")
+print("""     I found out that the new bigger table will not arrive on time.
 
-cannot_invite = guests.pop(0)
-print("     I am very sorry " + cannot_invite + " but I cannot invite you.")
-print("     The table I bought in Purgatory Store will not arrive on time.")
-print("")
-cannot_invite = guests.pop(0)
-print("     I am very sorry " + cannot_invite + " but I cannot invite you.")
-print("     The table I bought in Purgatory Store will not arrive on time.")
-print("")
-cannot_invite = guests.pop(0)
-print("     I am very sorry " + cannot_invite + " but I cannot invite you.")
-print("     The table I bought in Purgatory Store will not arrive on time.")
-print("")
-cannot_invite = guests.pop(0)
-print("     I am very sorry " + cannot_invite + " but I cannot invite you.")
-print("     The table I bought in Purgatory Store will not arrive on time.")
-print("")
-cannot_invite = guests.pop(0)
-print("     I am very sorry " + cannot_invite + " but I cannot invite you.")
-print("     The table I bought in Purgatory Store will not arrive on time.")
-print("")
-cannot_invite = guests.pop(0)
-print("     I am very sorry " + cannot_invite + " but I cannot invite you.")
-print("     The table I bought in Purgatory Store will not arrive on time.")
-print("")
-cannot_invite = guests.pop(0)
-print("     I am very sorry " + cannot_invite + " but I cannot invite you.")
-print("     The table I bought in Purgatory Store will not arrive on time.")
-print("")
-cannot_invite = guests.pop(0)
-print("     I am very sorry " + cannot_invite + " but I cannot invite you.")
-print("     The table I bought in Purgatory Store will not arrive on time.")
-print("")
-cannot_invite = guests.pop(0)
-print("     I am very sorry " + cannot_invite + " but I cannot invite you.")
-print("     The table I bought in Purgatory Store will not arrive on time.")
-print("")
+""")
+
+def drop_guest(index):
+
+    cannot_invite = guests.pop(index)
+
+    print("""     I am very sorry {nam} but I cannot invite you.
+     The table I bought in Purgatory Store will not arrive on time.
+""".format(nam=cannot_invite))
+
+# did not read the assignment - you probably want to empty the list one by one?
+# `_` can be used when you do not need the value
+# - i am not printing `i` variable in the following for loop, so why would i assign it a name
+number_to_remove = len(guests) - 2
+for _ in range(number_to_remove):
+    drop_guest(0)
 
                 # Author of the book probably did not expect
                             # such a long list :D
 print("")
 
 for guest in guests:
-    print("     Dear " + guest + ", although my table is very small")
-    print("     you are still invited. Looking forward to see you!")
-    print("")
+    print("""     Dear {guest}, although my table is very small
+     you are still invited. Looking forward to see you!
+""".format(guest=guest))
 
+for _ in range(2):
+    del guests[0]
 
-del guests[0]
-del guests[0]       # Is there a way how to remove both people
-                    # from a list in one line instead of two?
+# Is there a way how to remove both people
+# from a list in one line instead of two?
+# - there is - for loop
 print(guests)
